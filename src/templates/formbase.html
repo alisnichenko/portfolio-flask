@@ -1,0 +1,20 @@
+<html>
+
+<head>
+    {% if title %}
+    <title>{{ title }} - Flask Form for Simple Website </title>
+    {% else %}
+    <title>Welcome </title>
+    {% endif %}
+</head>
+
+<body>
+    <div> Simple Taskbar:
+        <a href="/index">Home</a>
+        <a href="/login">Login</a>
+    </div>
+    <hr>
+    {% block content %}{% endblock %}
+</body>
+
+</html>

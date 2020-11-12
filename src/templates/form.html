@@ -1,0 +1,17 @@
+<html>
+
+<head>
+    <title>Single Name Input in Flask Form</title>
+</head>
+
+<body>
+    <h1>A Simple Form kindly input your name here </h1>
+    <form method="POST" action="{{ url_for('form') }}">
+        {{ form.csrf_token }}
+        {{ form.username.label }}
+        {{ form.username }}
+        <input type="submit" value="Submit">
+    </form>
+</body>
+
+</html>
