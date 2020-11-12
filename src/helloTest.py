@@ -1,12 +1,30 @@
 # helloTest.py
 # at the end point / call method hello which returns "hello world"
-from flask import Flask, render_template
+from flask import Flask, render_template, session
 app = Flask(__name__)
+
+# Include the extra two lines below
+app.secret_key = 'very secret message that hunter will never guess'
+app.config['SESSION_TYPE'] = 'filesystem'
 
 
 @app.route("/")
 def home():
+    count_refresh()
     return render_template("home.html")
+
+
+# This doesn't work... help plz
+def count_refresh():
+    y = session.get('y', None)
+    if not y:
+        session['y'] = 1
+    elif y >= 10:
+        session.clear()
+        return "The session is clear"
+    else:
+        session['y'] += 1
+        return "The Total Numer of refreshes for this user is: " + str(session['y'])
 
 
 @app.route("/about")

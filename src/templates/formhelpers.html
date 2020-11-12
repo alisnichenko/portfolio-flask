@@ -1,0 +1,38 @@
+<html>
+
+<head>
+    {% if title %}
+    <title>{{ title }} - Flask Form for Simple Website </title>
+    {% else %}
+    <title>Welcome </title>
+    {% endif %}
+</head>
+
+<body>
+    <div> Simple Taskbar:
+        <a href="/index">Home</a>
+        <a href="/login">Login</a>
+    </div>
+    <hr>
+    {% block content %}{% endblock %}
+</body>
+
+</html>
+Codes for Formlogin.html
+{% extends "Formbase.html" %}
+{% block content %}
+<h1>Sign In</h1>
+<form action="" method="post" novalidate>
+    {{ form.hidden_tag() }}
+    <p>
+        {{ form.username.label }}<br>
+        {{ form.username(size=32) }}
+    </p>
+    <p>
+        {{ form.password.label }}<br>
+        {{ form.password(size=32) }}
+    </p>
+    <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
+    <p>{{ form.submit() }}</p>
+</form>
+{% endblock %}
